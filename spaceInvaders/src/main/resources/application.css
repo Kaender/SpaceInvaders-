@@ -1,8 +1,21 @@
 
-#rootPane { 
+#startPane { 
     -fx-background-image: url("/sprites/background.png"); 
     -fx-background-size: cover; 
     -fx-background-repeat: no-repeat; 
-    -fx-background-position: center center /* Centraliza a imagem */
+    -fx-background-position: center center 
 }
 
+#gamePane { 
+    -fx-background-image: url("/sprites/background.png"); 
+    -fx-background-size: cover; 
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center 
+}
+
+#finalPane { 
+    -fx-background-image: url("/sprites/background.png"); 
+    -fx-background-size: cover; 
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center 
+}

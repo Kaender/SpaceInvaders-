@@ -1,38 +1,29 @@
 package spaceInvaders;
-	
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-
+import javafx.stage.Stage;
 
 public class Main extends Application {
-	
-	@Override
-	public void start(Stage stage) throws Exception {
-		try {
-            Parent root_iniciar = FXMLLoader.load(getClass().getResource("/telaInicial.fxml"));
-            Scene scene_inicio = new Scene(root_iniciar);
-            scene_inicio.getStylesheets().addAll(this.getClass().getResource("/application.css").toExternalForm());
-            
 
-          
-            
-            stage.setScene(scene_inicio);
+    @Override
+    public void start(Stage stage) {
+        try {
+            Parent rootInicio = FXMLLoader.load(getClass().getResource("/telaInicial.fxml"));
+            Scene sceneInicio = new Scene(rootInicio);
+
+            stage.setScene(sceneInicio);
+            stage.setTitle("Space Invaders");   // título da janela
+            stage.setResizable(false);          // bloqueia redimensionamento
             stage.show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-	
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
 
-
-}   
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

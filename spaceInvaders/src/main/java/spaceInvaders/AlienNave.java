@@ -1,44 +1,54 @@
 package spaceInvaders;
 
+import javafx.scene.image.ImageView;
+import java.util.Random;
+
 public class AlienNave extends Nave {
+    private final Random random = new Random();
 
-	private int hp;
+    public AlienNave(String spritePath, double x, double y) {
+        setPosX(x);
+        setPosY(y);
+        setSprite(spritePath);
+        setSpriteView(new ImageView(getSprite()));
 
-	public AlienNave() {
-		
-		this.setHp(1);
-		
-	}
-	
+        // Posiciona o sprite na cena
+        getSpriteView().setX(getPosX());
+        getSpriteView().setY(getPosY());
 
-	public void mover() {
+        setVelocidade(1);
+        setDescida(20);
+        setMovimentoParaDireita(true);
+    }
 
-		
-	}
+    public void moverHorizontal(boolean paraDireita, double velocidade) {
+        double x = getSpriteView().getX();
+        if (paraDireita) {
+            x += velocidade;
+        } else {
+            x -= velocidade;
+        }
+        getSpriteView().setX(x);
+        setPosX(x);
+    }
 
+    public void descer() {
+        double y = getSpriteView().getY();
+        double novaY = y + getDescida();
+        getSpriteView().setY(novaY);
+        setPosY(novaY);
+    }
 
-	public void atacar() {
-	
-		
-	}
+    public Disparo atacar() {
+        // Centraliza o disparo horizontalmente em relação à nave
+        double disparoX = getPosX() + getSpriteView().getFitWidth() / 2 - 5;
+        double disparoY = getPosY() + getSpriteView().getFitHeight();
 
-	@Override
-	public void destruir() {
+        return new Disparo(disparoX, disparoY, false); //false = o disparo não veio do player
+    }
 
-		
-	}
-	
-	//setter e getters
-	public int getHp() {
-		return hp;
-	}
-
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
-
-
-
-	
-	
+    @Override
+    public void destruir() {
+        getSpriteView().setVisible(false);
+    }
 }

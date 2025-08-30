@@ -1,44 +1,31 @@
 package spaceInvaders;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class PlayerNave extends Nave{
+public class PlayerNave extends Nave {
 
-	 
-	public PlayerNave() {
-		
-		setHp(3);
-		setSprite("/sprites/Player_Nave.png");
-		setPosX(300);
-		setPosY(450);
-		setSpriteView(new ImageView(this.getSprite()));
-		this.getSpriteView().setX(getPosX());
-        this.getSpriteView().setY(getPosY());
-	}	
-	
-	
-	
-	 public void mover(int deltaX) {
-	        // Atualiza a posicao interna
-	        this.setPosX(this.getPosX() + deltaX);
-	        
-	        // ATUALIZA A POSICAO VISUAL
-	        this.getSpriteView().setX(getPosX());
-	 }
-	
-	public Disparo atacar() {
-		Disparo disparo = new Disparo(this.getPosX());	
-		return disparo;
-	}
+    public PlayerNave() {
+        setHp(3);
+        setSprite("/sprites/Player_Nave.png");
+        setPosX(620);
+        setPosY(600);
+        setSpriteView(new ImageView(getSprite()));
+    }
 
-	@Override
-	public void destruir() {
+    public void mover(int deltaX) {
+        setPosX(getPosX() + deltaX);
+    }
 
-		
-	}
+    public Disparo atacar() {
+        double disparoX = getPosX() + 22;
+        double disparoY = getPosY() - 20; // dispara para cima
+        return new Disparo(disparoX, disparoY, true); //true = o disparo veio do player
+    }
 
-
-	
-	
+    @Override
+    public void destruir() {
+        if (getSpriteView() != null) {
+            getSpriteView().setVisible(false);
+        }
+    }
 }
