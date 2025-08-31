@@ -2,9 +2,9 @@
 import sys
 from PySide6.QtWidgets import QApplication
 
-from InicioWindow import InicioWindow
-from TelaJogo import JogoWindow
-from FinalWindow import FinalWindow
+from ControladorInicio import ControladorInicio
+from ControladorJogo import ControladorJogo
+from ControladorFinal import ControladorFinal
 
 
 class GerenciadorDeJanelas:
@@ -15,7 +15,7 @@ class GerenciadorDeJanelas:
         self.janela_final = None
 
     def mostrar_inicio(self):
-        self.janela_inicio = InicioWindow()
+        self.janela_inicio = ControladorInicio()
         self.janela_inicio.iniciar_jogo_signal.connect(self.iniciar_jogo)
         self.janela_inicio.show()
 
@@ -24,7 +24,7 @@ class GerenciadorDeJanelas:
             self.janela_inicio.close()
             self.janela_inicio = None
 
-        self.janela_jogo = JogoWindow()
+        self.janela_jogo = ControladorJogo()
         self.janela_jogo.encerrar_jogo_signal.connect(self.mostrar_final)
         self.janela_jogo.show()
         self.janela_jogo.iniciar_jogo()
@@ -34,7 +34,7 @@ class GerenciadorDeJanelas:
             self.janela_jogo.close()
             self.janela_jogo = None
 
-        self.janela_final = FinalWindow(venceu)
+        self.janela_final = ControladorFinal(venceu)
         self.janela_final.iniciar_jogo.connect(self.iniciar_jogo)
         self.janela_final.encerrar_jogo.connect(self.app.quit)
         self.janela_final.show()
