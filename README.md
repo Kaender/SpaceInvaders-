@@ -11,6 +11,8 @@ Para executar o projeto em java apenas abra o terminal na pasta do programa, e u
 Para executar o projeto em python abra o terminal na pasta do programa, e utilize: python main.py
 Caso você não tenha a biblioteca necessária para o python, use pip install PySide6 no terminal antes.
 
+O release sourceCode possui as duas pastas com as duas linguagens!
+
 ## Discussão sobre o Tema
 
 O tema proposto foi criar uma cópia do jogo Space Invaders, um jogo simples, possui poucas mecanicas e objetos, portanto o grande desafio desse tema foi apenas o uso das bibliotecas graficas, pois ate mesmo os metodos que 
